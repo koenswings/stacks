@@ -1,7 +1,6 @@
 version: '2'
 networks:
-  frontend:
-    external: true
+  wwwordpress:
 services:
    db:
      image: yobasystems/alpine-mariadb:latest
@@ -14,7 +13,7 @@ services:
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
      networks:
-       - frontend
+       - wwwordpress
    wordpress:
      depends_on:
        - db
@@ -27,6 +26,6 @@ services:
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
      networks:
-       - frontend
+       - wwwordpress
 volumes:
     db_data:
